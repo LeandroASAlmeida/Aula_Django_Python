@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Cadastro de Cidade{% endblock %}
+
+{% block corpo %}
+    <div class="form-control">
+        <form action="#">
+            <div class="text-center">
+                <h3>
+                    <label class="text-primary">Cadastro de Cidade</label>
+                </h3>
+            </div>
+            <div class="mb-3">
+                <label for="nome" class="form-label">Nome</label>
+                <input type="text" class="form-control" id="nome" maxlength="50" required>
+            </div>
+            <div class="mb-3">
+                <label for="estado" class="form-label">Estado</label>
+                <select id="estado" class="form-select">
+                    <option value="0">Selecione</option>
+                    <option value="1">Santa Catarina</option>
+                    <option value="2">Paraná</option>
+                </select>
+            </div>
+            
+            {% include 'acoes_form.html' %}
+            
+        </form>
+    </div>
+{% endblock %}

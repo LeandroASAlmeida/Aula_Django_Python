@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Lista de Tipo de Pessoa{% endblock %}
+
+{% block corpo %}
+    <div class="text-center">
+        <h3>
+            <label class="text-primary">Lista de Tipos de Pessoa</label>
+        </h3>
+    </div>
+
+      <div class="container mt-4">
+        <button class="btn btn-primary" onclick="location.href='cadastra-tp-pessoa'">Novo</button>
+    </div>
+    <div class="container mt-4">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Tipo Pessoa</th>
+                    <th class="text-center">Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td class="text-center">
+                        <button class="btn btn-warning" onclick="location.href='altera-tp-pessoa'">Alterar</button>
+                        <button class="btn btn-danger" onclick="location.href='exclui-tp-pessoa'">Excluir</button>
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="2">
+                        <label>Total de registros: 0</label>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+{% endblock %}

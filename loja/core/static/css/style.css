@@ -1,0 +1,10 @@
+body{
+    background-color: #fdfdfd;
+    
+}
+.imagemInicio{
+    margin-left: 20%;
+    height: 40%;
+    position: relative;
+    width: 40%;
+}

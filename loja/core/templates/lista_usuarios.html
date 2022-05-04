@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Lista de Usuários{% endblock %}
+
+{% block corpo %}
+    <div class="text-center">
+        <h3>
+            <label class="text-primary">Lista de Usuários</label>
+        </h3>
+    </div>
+
+    <div class="container mt-4">
+        <button class="btn btn-primary" onclick="location.href='cadastra-usuario'">Novo</button>
+    </div>
+    <div class="container mt-4">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Sobrenome</th>
+                    <th class="text-center">Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td class="text-center">
+                        <button class="btn btn-warning" onclick="location.href='altera-usuario'">Alterar</button>
+                        <button class="btn btn-danger" onclick="location.href='exclui-usuario'">Excluir</button>
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="3">
+                        <label>Total de registros: 0</label>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
+{% endblock %}

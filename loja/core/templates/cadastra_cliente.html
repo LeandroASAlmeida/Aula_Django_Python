@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Cadastro de Cliente{% endblock %}
+
+{% block corpo %}
+    <div class="form-control">
+        <form action="#">
+            <div class="text-center">
+                <h3>
+                    <label class="text-primary">Cadastro de Cliente</label>
+                </h3>
+            </div>
+            <div class="mb-3">
+                <label for="nome" class="form-label">Nome</label>
+                <input type="text" class="form-control" id="nome" maxlength="50" required>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">E-mail</label>
+                <input type="email" class="form-control" id="email" maxlength="100">
+            </div>
+            <div class="mb-3">
+                <label for="cpf_cnpj" class="form-label">CPF / CNPJ</label>
+                <input type="text" class="form-control" id="cpf_cnpj" maxlength="14" required>
+            </div>
+            <div class="mb-3">
+                <label for="tp_pessoa" class="form-label">Tipo de Pessoa</label>
+                <select id="tp_pessoa" class="form-select">
+                    <option value="0">Selecione</option>
+                    <option value="1">Física</option>
+                    <option value="2">Jurídica</option>
+                </select>
+            </div>
+            
+            {% include 'acoes_form.html' %}
+            
+        </form>
+    </div>
+{% endblock %}

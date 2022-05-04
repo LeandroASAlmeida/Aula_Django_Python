@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Exclusão de Categoria{% endblock %}
+
+{% block corpo %}
+    <div class="form-control">
+        <form action="#">
+            <div class="text-center">
+                <h3>
+                    <label class="text-primary">Exclusão de Categoria - Categoria</label>
+                </h3>
+            </div>
+            <div class="mb-3">
+                <label for="nome" class="form-label">Categoria</label>
+                <input type="text" class="form-control" id="nome" maxlength="50" readonly /> 
+            </div>
+            
+            {% include 'acoes_form_exclui.html' %}
+            
+        </form>
+    </div>
+{% endblock %}
