@@ -23,20 +23,22 @@
                 </tr>
             </thead>
             <tbody>
+                {% for cliente in cliente %}
                 <tr>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
+                    <td>{{cliente.nome}}</td>
+                    <td>{{cliente.email}}</td>
+                    <td>{{cliente.tp_pessoa}}</td>
                     <td class="text-center">
                         <button class="btn btn-warning" onclick="location.href='altera-cliente'">Alterar</button>
                         <button class="btn btn-danger" onclick="location.href='exclui-cliente'">Excluir</button>
                     </td>
                 </tr>
+                {%endfor%}
             </tbody>
             <tfoot>
                 <tr>
                     <td colspan="4">
-                        <label>Total de registros: 0</label>
+                        <label>Total de registros: {{total}}</label>
                     </td>
                 </tr>
             </tfoot>

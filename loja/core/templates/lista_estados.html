@@ -22,19 +22,22 @@
                 </tr>
             </thead>
             <tbody>
+                {% for estado in estado %}
                 <tr>
-                    <td>&nbsp;</td>
+                    <td>{{estado.sigla}}</td>
+                    <td>{{estado.nome}}</td>
                     <td>&nbsp;</td>
                     <td class="text-center">
                         <button class="btn btn-warning" onclick="location.href='altera-estado'">Alterar</button>
                         <button class="btn btn-danger" onclick="location.href='exclui-estado'">Excluir</button>
                     </td>
                 </tr>
+                {%endfor%}
             </tbody>
             <tfoot>
                 <tr>
                     <td colspan="3">
-                        <label>Total de registros: 0</label>
+                        <label>Total de registros: {{total}}</label>
                     </td>
                 </tr>
             </tfoot>

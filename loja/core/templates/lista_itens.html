@@ -21,18 +21,21 @@
                 </tr>
             </thead>
             <tbody>
+                {% for item in item %}
                 <tr>
-                    <td>&nbsp;</td>
+                    <td>{{ item.descricao }}</td>
+                    <td>{{ item.categoria }}</td>
                     <td class="text-center">
                         <button class="btn btn-warning" onclick="location.href='altera-item'">Alterar</button>
                         <button class="btn btn-danger" onclick="location.href='exclui-item'">Excluir</button>
                     </td>
                 </tr>
+                {%endfor%}
             </tbody>
             <tfoot>
                 <tr>
-                    <td colspan="2">
-                        <label>Total de registros: 0</label>
+                    <td colspan="3">
+                        <label>Total de registros: {{total}}</label>
                     </td>
                 </tr>
             </tfoot>

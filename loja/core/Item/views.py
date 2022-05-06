@@ -1,8 +1,12 @@
 from django.shortcuts import render
+from .forms import FormCategorias,FormItem
+from.models import Categoria,Item
 
 # Create your views here.
 def lista_categorias(request):
-    return render(request, 'lista_categorias.html')
+    categorias = Categoria.objects.all()
+    total = categorias.count
+    return render(request, 'lista_categorias.html',{'categorias':categorias, 'total':total})
 
 def cadastra_categoria(request):
     return render(request, 'cadastra_categoria.html')
@@ -14,7 +18,9 @@ def exclui_categoria(request):
     return render(request, 'exclui_categoria.html')
     
 def lista_itens(request):
-    return render(request, 'lista_itens.html')
+    item = Item.objects.all()
+    total = item.count
+    return render(request, 'lista_itens.html',{'item':item,'item':item})
 
 def cadastra_item(request):
     return render(request, 'cadastra_item.html')

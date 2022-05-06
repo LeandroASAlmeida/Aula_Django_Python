@@ -22,19 +22,21 @@
                 </tr>
             </thead>
             <tbody>
+                {% for usuario in usuario %}
                 <tr>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
+                    <td>{usuario.nome</td>
+                    <td>{{usuario.Sobrenome}</td>
                     <td class="text-center">
                         <button class="btn btn-warning" onclick="location.href='altera-usuario'">Alterar</button>
                         <button class="btn btn-danger" onclick="location.href='exclui-usuario'">Excluir</button>
                     </td>
                 </tr>
+                {%endfor%}
             </tbody>
             <tfoot>
                 <tr>
                     <td colspan="3">
-                        <label>Total de registros: 0</label>
+                        <label>Total de registros: {{total}}</label>
                     </td>
                 </tr>
             </tfoot>

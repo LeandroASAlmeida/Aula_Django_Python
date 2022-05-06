@@ -19,20 +19,23 @@
                     <th>Fornecedor</th>
                     <th class="text-center">Ações</th>
                 </tr>
+           
             </thead>
             <tbody>
+                {% for fornecedores in fornecedores %}
                 <tr>
-                    <td>&nbsp;</td>
+                    <td>{{fornecedor.fantasia}}</td>
                     <td class="text-center">
                         <button class="btn btn-warning" onclick="location.href='altera-fornecedor'">Alterar</button>
                         <button class="btn btn-danger" onclick="location.href='exclui-fornecedor'">Excluir</button>
                     </td>
                 </tr>
+                {%endfor%}
             </tbody>
             <tfoot>
                 <tr>
                     <td colspan="2">
-                        <label>Total de registros: 0</label>
+                        <label>Total de registros: {{total}}</label>
                     </td>
                 </tr>
             </tfoot>

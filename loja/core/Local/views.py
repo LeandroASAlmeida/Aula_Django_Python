@@ -1,8 +1,13 @@
 from django.shortcuts import render
 
+from .models import Cidade, Estado
+from .forms import FormCidade,FormEstado
+
 # Create your views here.
 def lista_estados(request):
-    return render(request, 'lista_estados.html')
+    estado = Estado.objects.all()
+    total = estado.count
+    return render(request, 'lista_estados.html',{'estado': estado,'total':total})
 
 def cadastra_estado(request):
     return render(request, 'cadastra_estado.html')
@@ -14,7 +19,9 @@ def exclui_estado(request):
     return render(request, 'exclui_estado.html')
 
 def lista_cidades(request):
-    return render(request, 'lista_cidades.html')
+    cidade = Cidade.objects.all()
+    total = cidade.count
+    return render(request, 'lista_cidades.html',{'cidade': cidade,'total':total})
 
 def cadastra_cidade(request):
     return render(request, 'cadastra_cidade.html')
