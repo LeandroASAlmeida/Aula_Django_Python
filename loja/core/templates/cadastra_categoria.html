@@ -4,7 +4,8 @@
 
 {% block corpo %}
     <div class="form-control">
-        <form action="#">
+        <form method="post">
+            {% csrf_token %}
             <div class="text-center">
                 <h3>
                     <label class="text-primary">Cadastro de Categoria</label>
@@ -12,7 +13,7 @@
             </div>
             <div class="mb-3">
                 <label for="nome" class="form-label">Categoria</label>
-                <input type="text" class="form-control" id="nome" maxlength="50" required>
+                <input type="text" class="form-control" name="nome "id="nome" maxlength="50" required>
             </div>
             
             {% include 'acoes_form.html' %}

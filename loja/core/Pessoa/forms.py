@@ -11,9 +11,7 @@ class FormCliente(ModelForm):
     class Meta: # Model Meta é basicamente a classe interna da sua classe de modelo.
         model = Cliente
         fields =['id','nome','email','cpfcnpj','tp_pessoa'] 
-    class Meta: # Model Meta é basicamente a classe interna da sua classe de modelo.
-        model = Fornecedor
-        fields =['id','nome','fantasia','email','cpfcnpj','tp_pessoa'] 
+
 
 class FormUsuario(ModelForm):
     class Meta: # Model Meta é basicamente a classe interna da sua classe de modelo.

@@ -4,7 +4,8 @@
 
 {% block corpo %}
     <div class="form-control">
-        <form action="#">
+        <form method="post">
+            {% csrf_token %}
             <div class="text-center">
                 <h3>
                     <label class="text-primary">Cadastro de Cliente</label>
@@ -12,22 +13,23 @@
             </div>
             <div class="mb-3">
                 <label for="nome" class="form-label">Nome</label>
-                <input type="text" class="form-control" id="nome" maxlength="50" required>
+                <input type="text" class="form-control" name="nome" id="nome" maxlength="50" required>
             </div>
             <div class="mb-3">
                 <label for="email" class="form-label">E-mail</label>
-                <input type="email" class="form-control" id="email" maxlength="100">
+                <input type="email" class="form-control" name="email" id="email" maxlength="100" required>
             </div>
             <div class="mb-3">
                 <label for="cpf_cnpj" class="form-label">CPF / CNPJ</label>
-                <input type="text" class="form-control" id="cpf_cnpj" maxlength="14" required>
+                <input type="text" class="form-control" name="cpfcnpj" id="cpf_cnpj" maxlength="14" required>
             </div>
             <div class="mb-3">
                 <label for="tp_pessoa" class="form-label">Tipo de Pessoa</label>
-                <select id="tp_pessoa" class="form-select">
+                <select id="tp_pessoa" class="form-select" name="tp_pessoa">
                     <option value="0">Selecione</option>
-                    <option value="1">Física</option>
-                    <option value="2">Jurídica</option>
+                        {% for tp in tipo %}
+                        <option value="{{ tp.id }}">{{ tp.descricao }}</option>
+                        {% endfor %}
                 </select>
             </div>
             

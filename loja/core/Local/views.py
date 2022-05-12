@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 
 from .models import Cidade, Estado
 from .forms import FormCidade,FormEstado
@@ -10,6 +10,11 @@ def lista_estados(request):
     return render(request, 'lista_estados.html',{'estado': estado,'total':total})
 
 def cadastra_estado(request):
+    if request.method == 'POST':
+        form = FormEstado(request.POST or None)
+        if form.is_valid():
+            form.save()
+            return redirect(lista_estados)
     return render(request, 'cadastra_estado.html')
 
 def altera_estado(request):
@@ -24,7 +29,13 @@ def lista_cidades(request):
     return render(request, 'lista_cidades.html',{'cidade': cidade,'total':total})
 
 def cadastra_cidade(request):
-    return render(request, 'cadastra_cidade.html')
+    estado = Estado.objects.all()
+    if request.method == 'POST':
+        form = FormCidade(request.POST or None)
+        if form.is_valid():
+            form.save()
+            return redirect(lista_cidades)
+    return render(request, 'cadastra_cidade.html',{'estados': estado})
 
 def altera_cidade(request):
     return render(request, 'altera_cidade.html')

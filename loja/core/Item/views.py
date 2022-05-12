@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from .forms import FormCategorias,FormItem
 from.models import Categoria,Item
 
@@ -9,6 +9,10 @@ def lista_categorias(request):
     return render(request, 'lista_categorias.html',{'categorias':categorias, 'total':total})
 
 def cadastra_categoria(request):
+    if request.method == 'POST':
+        form = FormCategorias(request.POST or None)
+        if form.is_valid():
+            return redirect(lista_categorias)
     return render(request, 'cadastra_categoria.html')
 
 def altera_categoria(request):
@@ -23,7 +27,13 @@ def lista_itens(request):
     return render(request, 'lista_itens.html',{'item':item,'item':item})
 
 def cadastra_item(request):
-    return render(request, 'cadastra_item.html')
+    categoria=Categoria.objects.all()
+    if request.method == 'POST':
+        form = FormItem(request.POST or None)
+        if form.is_valid():
+            form.save()
+            return redirect(lista_itens)
+    return render(request, 'cadastra_item.html',{'categorias':categoria})
 
 def altera_item(request):
     return render(request, 'altera_item.html')

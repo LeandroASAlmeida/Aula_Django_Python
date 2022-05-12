@@ -4,15 +4,16 @@
 
 {% block corpo %}
     <div class="form-control">
-        <form action="#">
+        <form method="post">
+            {% csrf_token %}
             <div class="text-center">
                 <h3>
-                    <label class="text-primary">Alteração de Tipo de Pessoa - Tipo Pessoa</label>
+                    <label class="text-primary">Alteração de Tipo de Pessoa - {{tipo.descricao}</label>
                 </h3>
             </div>
             <div class="mb-3">
                 <label for="descricao" class="form-label">Descrição</label>
-                <input type="text" class="form-control" id="descricao" maxlength="50" required>
+                <input type="text" class="form-control" id="descricao" name="descricao" maxlength="50" required>
             </div>
             
             {% include 'acoes_form_altera.html' %}

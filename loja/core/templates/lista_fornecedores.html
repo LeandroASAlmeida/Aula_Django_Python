@@ -13,6 +13,7 @@
         <button class="btn btn-primary" onclick="location.href='cadastra-fornecedor'">Novo</button>
     </div>
     <div class="container mt-4">
+        {% if total > 0%}
         <table class="table table-hover">
             <thead>
                 <tr>
@@ -22,7 +23,7 @@
            
             </thead>
             <tbody>
-                {% for fornecedores in fornecedores %}
+                {% for fornecedor in fornecedores %}
                 <tr>
                     <td>{{fornecedor.fantasia}}</td>
                     <td class="text-center">
@@ -40,5 +41,8 @@
                 </tr>
             </tfoot>
         </table>
+        {%else%}
+        {%include 'sem_item_cadastrado.html' %}
+        {%endif%}
     </div>
 {% endblock %}

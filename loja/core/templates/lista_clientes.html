@@ -13,6 +13,7 @@
         <button class="btn btn-primary" onclick="location.href='cadastra-cliente'">Novo</button>
     </div>
     <div class="container mt-4">
+        {% if total > 0 %}
         <table class="table table-hover">
             <thead>
                 <tr>
@@ -25,23 +26,26 @@
             <tbody>
                 {% for cliente in cliente %}
                 <tr>
-                    <td>{{cliente.nome}}</td>
-                    <td>{{cliente.email}}</td>
-                    <td>{{cliente.tp_pessoa}}</td>
+                    <td>{{ cliente.nome }}</td>
+                    <td>{{ cliente.email }}</td>
+                    <td>{{ cliente.tp_pessoa }}</td>
                     <td class="text-center">
                         <button class="btn btn-warning" onclick="location.href='altera-cliente'">Alterar</button>
                         <button class="btn btn-danger" onclick="location.href='exclui-cliente'">Excluir</button>
                     </td>
                 </tr>
-                {%endfor%}
+                {% endfor %}
             </tbody>
             <tfoot>
                 <tr>
                     <td colspan="4">
-                        <label>Total de registros: {{total}}</label>
+                        <label>Total de registros: {{ total }}</label>
                     </td>
                 </tr>
             </tfoot>
         </table>
+        {% else %}
+        {% include  'sem_item_cadastrado.html'  %}
+        {% endif %}
     </div>
 {% endblock %}
