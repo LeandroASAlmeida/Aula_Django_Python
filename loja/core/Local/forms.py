@@ -1,7 +1,6 @@
-from dataclasses import field
 from django import forms
 from django.forms import ModelForm
-from.models import Estado,Cidade
+from .models import Estado, Cidade
 
 class FormEstado(ModelForm):
     class Meta:
@@ -12,6 +11,5 @@ class FormEstado(ModelForm):
 class FormCidade(ModelForm):
     class Meta:
         model = Cidade
-        fields = ['id','estado','nome']
+        fields = ['id','nome','estado']
         db_table = 'cidade'
-

@@ -3,48 +3,46 @@
 {% block titulo %}Lista de Usuários{% endblock %}
 
 {% block corpo %}
-    <div class="text-center">
-        <h3>
-            <label class="text-primary">Lista de Usuários</label>
-        </h3>
-    </div>
-
-    <div class="container mt-4">
-        <button class="btn btn-primary" onclick="location.href='cadastra-usuario'">Novo</button>
-    </div>
-    <div class="container mt-4">
-        {% if total > 0%}
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th>Nome</th>
-                    <th>Sobrenome</th>
-                    <th class="text-center">Ações</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for usuario in usuario %}
-                <tr>
-                    <td>{usuario.nome</td>
-                    <td>{{usuario.Sobrenome}</td>
-                    <td class="text-center">
-                        <button class="btn btn-warning" onclick="location.href='altera-usuario'">Alterar</button>
-                        <button class="btn btn-danger" onclick="location.href='exclui-usuario'">Excluir</button>
-                    </td>
-                </tr>
-                {%endfor%}
-            </tbody>
-            <tfoot>
-                <tr>
-                    <td colspan="3">
-                        <label>Total de registros: {{total}}</label>
-                    </td>
-                </tr>
-            </tfoot>
-        </table>
-        {%else%}
-        {%include 'sem_item_cadastrado.html' %}
-        {%endif%}
-    </div>
-
+<div class="text-center">
+    <h3>
+        <label class="text-primary">Lista de Usuários</label>
+    </h3>
+</div>
+<div class="container mt-4">
+    <button class="btn btn-primary" onclick="location.href='cadastra-usuario'">NOVO</button>
+</div>
+<div class="container mt-4">
+    {% if total > 0 %}
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Sobrenome</th>
+                <th class="text-center">Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for usuario in usuarios %}
+            <tr>
+                <td>{{ usuario.nome }}</td>
+                <td>{{ usuario.sobrenome }}</td>
+                <td class="text-center">
+                    <button class="btn btn-warning" onclick="location.href='altera-usuario/{{ usuario.id }}'">ALTERAR</button>
+                    <button class="btn btn-danger" onclick="location.href='exclui-usuario'">EXCLUIR</button>
+                </td>                
+            </tr>
+            {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="3">
+                    <label>Total de Registros: {{ total }}</label>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+    {% else %}
+    {% include 'sem_item_cadastrado.html' %}
+    {% endif %}
+</div>
 {% endblock %}

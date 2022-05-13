@@ -3,42 +3,40 @@
 {% block titulo %}Cadastro de Fornecedor{% endblock %}
 
 {% block corpo %}
-    <div class="form-control">
-        <form method="post">
-            {% csrf_token %}
-            <div class="text-center">
-                <h3>
-                    <label class="text-primary">Cadastro de Fornecedor</label>
-                </h3>
-            </div>
-            <div class="mb-3">
-                <label for="nome" class="form-label">Nome</label>
-                <input type="text" class="form-control" id="nome" name="nome" maxlength="50" required>
-            </div>
-            <div class="mb-3">
-                <label for="fantasia" class="form-label">Fantasia</label>
-                <input type="text" class="form-control" id="fantasia" name="fantasia" maxlength="100" required>
-            </div>
-            <div class="mb-3">
-                <label for="email" class="form-label">E-mail</label>
-                <input type="email" class="form-control" id="email" name="email" maxlength="100" required>
-            </div>
-            <div class="mb-3">
-                <label for="cpf_cnpj" class="form-label">CPF / CNPJ</label>
-                <input type="text" class="form-control" id="cpf_cnpj" name="cpfcnpj" maxlength="14" required>
-            </div>
-            <div class="mb-3">
-                <label for="tp_pessoa" class="form-label">Tipo de Pessoa</label>
-                <select id="tp_pessoa" class="form-select" name="tp_pessoa">
-                    <option value="0">Selecione</option>
-                        {% for tp in tipo %}
-                        <option value="{{ tp.id }}">{{ tp.descricao }}</option>
-                        {% endfor %}
-                </select>
-            </div>
-            
-            {% include 'acoes_form.html' %}
-            
-        </form>
-    </div>
+<div class="form-control">
+    <form method="post" >
+        {% csrf_token %}
+        <div class="text-center">
+            <h3>
+                <label class="text-primary">Cadastro de Fornecedor</label>
+            </h3>
+        </div>
+        <div class="mb-3">
+            <label for="nome" class="form-label">Nome</label>
+            <input type="text" class="form-control" name="nome" id="nome" maxlength="50" required />
+        </div>
+        <div class="mb-3">
+            <label for="fantasia" class="form-label">Fantasia</label>
+            <input type="text" class="form-control" name="fantasia" id="fantasia" maxlength="100" required />
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">E-mail</label>
+            <input type="email" class="form-control" name="email" id="email" maxlength="100" required />
+        </div>
+        <div class="mb-3">
+            <label for="cpf_cnpj" class="form-label">CPF/CNPJ</label>
+            <input type="text" class="form-control" name="cpfcnpj" id="cpf_cnpj" required maxlength="14" />
+        </div>
+        <div class="mb-3">
+            <label for="tp_pessoa" class="form-label">Tipo de Pessoa</label>
+            <select id="tp_pessoa" class="form-select" name="tp_pessoa" >
+                <option value="0">Selecione</option>
+                {% for tipo in tipos %}
+                <option value="{{ tipo.id }}">{{ tipo.descricao }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        {% include 'acoes_form.html' %}
+    </form>
+</div>
 {% endblock %}

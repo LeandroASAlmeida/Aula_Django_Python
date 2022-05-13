@@ -1,10 +1,10 @@
 body{
     background-color: #fdfdfd;
-    
 }
-.imagemInicio{
+
+.ImagemInicio{
     margin-left: 20%;
     height: 40%;
-    position: relative;
     width: 40%;
+    position: relative;
 }

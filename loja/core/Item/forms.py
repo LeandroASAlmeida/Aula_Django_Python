@@ -1,15 +1,15 @@
 from django import forms
 from django.forms import ModelForm
-from.models import Categoria,Item
+from .models import Categoria, Item
 
-class FormCategorias(ModelForm):
-    class Meta: # Model Meta é basicamente a classe interna da sua classe de modelo.
+class FormCategoria(ModelForm):
+    class Meta:
         model = Categoria
-        fields =['id','nome'] # colunas
+        fields = ['id','nome']
         db_table = 'categoria'
 
 class FormItem(ModelForm):
-    class Meta: # Model Meta é basicamente a classe interna da sua classe de modelo.
+    class Meta:
         model = Item
-        fields =['id','descricao','categoria']
+        fields = ['id','descricao','categoria']
         db_table = 'item'
