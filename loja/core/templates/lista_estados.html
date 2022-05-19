@@ -28,7 +28,7 @@
                 <td>{{ estado.nome }}</td>
                 <td class="text-center">
                     <button class="btn btn-warning" onclick="location.href='altera-estado/{{ estado.id }}'">ALTERAR</button>
-                    <button class="btn btn-danger" onclick="location.href='exclui-estado'" >EXCLUIR</button>
+                    <button class="btn btn-danger" onclick="location.href='exclui-estado/{{ estado.id }}'" >EXCLUIR</button>
                 </td>                
             </tr>
             {% endfor %}

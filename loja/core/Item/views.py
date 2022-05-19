@@ -26,8 +26,14 @@ def altera_categoria(request,id):
             return redirect(lista_categorias)
     return render(request,'altera_categoria.html',{'categoria':categoria})
 
-def exclui_categoria(request):
-    return render(request,'exclui_categoria.html')
+def exclui_categoria(request,id):
+    categoria = Categoria.objects.get(id=id)
+
+    if request.method == 'POST':
+        categoria.delete()
+        return redirect(lista_categorias)
+
+    return render(request,'exclui_categoria.html',{'categoria':categoria})
 
 def lista_itens(request):
     item = Item.objects.all()
@@ -61,5 +67,11 @@ def altera_item(request,id):
         }
     return render(request,'altera_item.html', dados)
 
-def exclui_item(request):
-    return render(request,'exclui_item.html')
+def exclui_item(request,id):
+    item = Item.objects.get(id=id)
+    categoria = Categoria.objects.get(id=item.categoria_id)
+
+    if request.method == 'POST':
+        item.delete()
+        return redirect(lista_itens)
+    return render(request,'exclui_item.html', {'item': item, 'categ': categoria})

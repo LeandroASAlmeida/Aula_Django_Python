@@ -4,23 +4,23 @@
 
 {% block corpo %}
 <div class="form-control">
-    <form action="#">
+    <form method="post">
+        {% csrf_token %}
         <div class="text-center">
+            
             <h3>
-                <label class="text-primary">Exclusão de Cidade - Cidade</label>
+                <label class="text-primary">Exclusão de Cidade - {{ cidade.nome }}</label>
             </h3>
         </div>
         <div class="mb-3">
-            <label for="nome" class="form-label">Nome</label>
-            <input type="text" class="form-control" id="nome" maxlength="50" readonly />
+            <label for="nome" class="form-label">Nome</label> 
+            <input type="text" class="form-control" id="nome" name="nome" value="{{ cidade.nome }}" maxlength="50" disabled />
         </div>
         <div class="mb-3">
             <label for="estado" class="form-label">Estado</label>
             <select name="estado" id="estado" class="form-select" disabled >
-                <option value="0">Selecione</option>
-                <option value="1">Santa Catarina</option>
-                <option value="2">Paraná</option>
-                <option value="3">Rio Grande do Sul</option>
+                <option value="{{ estado.id }}">{{ estado.nome }}</option>
+              
             </select>
         </div>
         {% include 'acoes_form_exclui.html' %}

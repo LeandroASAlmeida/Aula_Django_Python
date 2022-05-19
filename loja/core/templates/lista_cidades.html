@@ -28,7 +28,7 @@
                 <td>{{ cidade.estado }}</td>
                 <td class="text-center">
                     <button class="btn btn-warning" onclick="location.href='altera-cidade/{{ cidade.id }}'">ALTERAR</button>
-                    <button class="btn btn-danger" onclick="location.href='exclui-cidade'">EXCLUIR</button>
+                    <button class="btn btn-danger" onclick="location.href='exclui-cidade/{{ cidade.id }}'">EXCLUIR</button>
                 </td>                
             </tr>
             {% endfor %}

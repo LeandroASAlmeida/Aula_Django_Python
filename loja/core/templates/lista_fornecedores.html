@@ -26,7 +26,7 @@
                 <td>{{ fornecedor.fantasia }}</td>
                 <td class="text-center">
                     <button class="btn btn-warning" onclick="location.href='altera-fornecedor/{{ fornecedor.id }}'">ALTERAR</button>
-                    <button class="btn btn-danger" onclick="location.href='exclui-fornecedor'">EXCLUIR</button>
+                    <button class="btn btn-danger" onclick="location.href='exclui-fornecedor/{{ fornecedor.id }}'">EXCLUIR</button>
                 </td>                
             </tr>
             {% endfor %}

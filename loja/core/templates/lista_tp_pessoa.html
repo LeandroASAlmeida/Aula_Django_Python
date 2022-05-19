@@ -11,6 +11,7 @@
 <div class="container mt-4">
     <button class="btn btn-primary" onclick="location.href='cadastra-tipo-pessoa'" >NOVO</button>
 </div>
+{% include 'form_pesquisa.html' %} 
 <div class="container mt-4">
     {% if total > 0 %}
     <table class="table table-hover">
@@ -28,7 +29,7 @@
                 <td>{{ tipo.descricao }}</td>
                 <td class="text-center">
                     <button class="btn btn-warning" onclick="location.href='altera-tipo-pessoa/{{ tipo.id }}'" >ALTERAR</button>
-                    <button class="btn btn-danger" onclick="location.href='exclui-tipo-pessoa'" >EXCLUIR</button>
+                    <button class="btn btn-danger" onclick="location.href='exclui-tipo-pessoa/{{ tipo.id }}'" >EXCLUIR</button>
                 </td>                
             </tr>
             {% endfor %}

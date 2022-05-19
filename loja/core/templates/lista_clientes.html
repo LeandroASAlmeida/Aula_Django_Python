@@ -30,7 +30,7 @@
                 <td>{{ cliente.tp_pessoa }}</td>
                 <td class="text-center">
                     <button class="btn btn-warning" onclick="location.href='altera-cliente/{{ cliente.id }}'">ALTERAR</button>
-                    <button class="btn btn-danger" onclick="location.href='exclui-cliente'">EXCLUIR</button>
+                    <button class="btn btn-danger" onclick="location.href='exclui-cliente/{{ cliente.id }}'">EXCLUIR</button>
                 </td>                
             </tr>
             {% endfor %}
