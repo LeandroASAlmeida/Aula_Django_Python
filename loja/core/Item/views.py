@@ -4,9 +4,15 @@ from .models import Categoria, Item
 
 # Create your views here.
 def lista_categorias(request):
-    categorias = Categoria.objects.all()
+    procura = request.GET.get('procura')
+
+    if procura:
+        categorias = Categoria.objects.filter(nome__icontains=procura)
+    else:
+        categorias = Categoria.objects.all()
+
     total = categorias.count
-    return render(request,'lista_categorias.html',{ 'categorias' : categorias, 'total' : total })
+    return render(request,'lista_categorias.html',{ 'categorias' : categorias, 'total' : total, 'procura': procura })
 
 def cadastra_categoria(request):
     if request.method == 'POST':
@@ -36,9 +42,15 @@ def exclui_categoria(request,id):
     return render(request,'exclui_categoria.html',{'categoria':categoria})
 
 def lista_itens(request):
-    item = Item.objects.all()
+    procura=request.GET.get('procura')
+
+    if procura:
+        item = Item.objects.filter(descricao__icontains=procura)
+    else:
+        item = Item.objects.all()
+
     total = item.count
-    return render(request,'lista_itens.html',{ 'item' : item, 'total' : total })
+    return render(request,'lista_itens.html',{ 'item' : item, 'total' : total,'procura': procura })
 
 def cadastra_item(request):
     categoria = Categoria.objects.all()

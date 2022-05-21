@@ -27,9 +27,27 @@
             <label for="tp_pessoa" class="form-label">Tipo de Pessoa</label>
             <select id="tp_pessoa" class="form-select" disabled>
                 <option value="{{ tipo.id  }}">{{ tipo.descricao  }}</option>
-             
             </select>
         </div>
+        <div class="mb-3">
+            <label for="estado" class="form-label">Estado</label>
+            <select name="estado" id="estado" class="form-select" disabled>
+                <option value="0">Selecione o Estado</option>
+                {% for estado in estados %}
+                <option value="{{ estado.id }}">{{ estado.nome }}</option>
+                {% endfor %}
+            </select>
+        </div >
+        <div class="mb-3">
+            <label for="cidade" class="form-label">Cidade</label>
+            <select name="cidade" id="cidade" class="form-select" disabled>
+                <option value="0">Selecione a Cidade</option>
+                {% for cidade in cidades %}
+                <option value="{{ cidade.id }}">{{ cidade.nome }}</option>
+                {% endfor %}
+            </select>
+        </div >
+        </div >
         {% include 'acoes_form_exclui.html' %}
     </form>
 </div>

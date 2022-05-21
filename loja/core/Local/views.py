@@ -2,11 +2,17 @@ from django.shortcuts import render, redirect
 from .forms import FormCidade, FormEstado
 from. models import Estado, Cidade
 
+
 # Create your views here.
 def lista_estados(request):
-    estado = Estado.objects.all()
+    procura = request.GET.get('procura')
+
+    if procura:
+        estado = Estado.objects.filter(nome__icontains=procura)|Estado.objects.filter(sigla__icontains=procura)
+    else:
+       estado = Estado.objects.all()
     total = estado.count
-    return render(request,'lista_estados.html',{'estado' : estado, 'total' : total })
+    return render(request,'lista_estados.html',{'estado' : estado, 'total' : total,'procura': procura })
 
 def cadastra_estado(request):
     if request.method == 'POST':
@@ -37,9 +43,15 @@ def exclui_estado(request,id):
     return render(request,'exclui_estado.html',{'estado':estado})
 
 def lista_cidades(request):
-    cidades = Cidade.objects.all()
+    procura =request.GET.get('procura')
+
+    if procura:
+        cidades = Cidade.objects.filter(nome__icontains=procura)
+    else:
+        cidades = Cidade.objects.all()
+
     total = cidades.count
-    return render(request,'lista_cidades.html', { 'cidades' : cidades, 'total' : total })
+    return render(request,'lista_cidades.html', { 'cidades' : cidades, 'total' : total,'procura': procura})
 
 def cadastra_cidade(request):
     estado = Estado.objects.all()
