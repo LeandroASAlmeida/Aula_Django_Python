@@ -1,3 +1,3 @@
 function msg(){
-    alert('Ola mundo');
+    alert('Hello World!')
 }

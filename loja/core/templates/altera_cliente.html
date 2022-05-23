@@ -3,59 +3,60 @@
 {% block titulo %}Alteração de Cliente{% endblock %}
 
 {% block corpo %}
-<div class="form-control">
-    <form method="post" >
-        {% csrf_token %}
-        <div class="text-center">
-            <h3>
-                <label class="text-primary">Alteração de Cliente - {{ cliente.nome }}</label>
-            </h3>
-        </div>
-        <div class="mb-3">
-            <label for="nome" class="form-label">Nome</label>
-            <input type="text" class="form-control" name="nome" id="nome" value="{{ cliente.nome }}" maxlength="50" required />
-        </div>   
-        <div class="mb-3">
-            <label for="email" class="form-label">E-mail</label>
-            <input type="email" class="form-control" name="email" id="email" value="{{ cliente.email }}" maxlength="100" />
-        </div>
-        <div class="mb-3">
-            <label for="cpf_cnpj" class="form-label">CPF/CNPJ</label>
-            <input type="text" class="form-control" name="cpfcnpj" id="cpf_cnpj" value="{{ cliente.cpfcnpj }}" required maxlength="14" />
-        </div>
-    </select>
-        <div class="mb-3">
-            <label for="tp_pessoa" class="form-label">Tipo de Pessoa</label>
-            <select id="tp_pessoa" class="form-select" name="tp_pessoa">
-                <option value="0">Selecione</option>
-                {% for tipo in tipos %}
-                {% if tipoPessoa == tipo.id %}
-                <option value="{{ tipo.id }}" selected>{{ tipo.descricao }}</option>
-                {% else %}
-                <option value="{{ tipo.id }}">{{ tipo.descricao }}</option>
-                {% endif %}
-                {% endfor %}
-            </select>
-        </div>
-        <div class="mb-3">
-            <label for="estado" class="form-label">Estado</label>
-            <select name="estado" id="estado" class="form-select">
-                <option value="0">Selecione o Estado</option>
-                {% for estado in estados %}
-                <option value="{{ estado.id }}">{{ estado.nome }}</option>
-                {% endfor %}
-            </select>
-        </div >
-        <div class="mb-3">
-            <label for="cidade" class="form-label">Cidade</label>
-            <select name="cidade" id="cidade" class="form-select">
-                <option value="0">Selecione a Cidade</option>
-                {% for cidade in cidades %}
-                <option value="{{ cidade.id }}">{{ cidade.nome }}</option>
-                {% endfor %}
-            </select>
-        </div >
-        {% include 'acoes_form_altera.html' %}
-    </form>
-</div>
+    <div class="form-control">
+        <form method="post">
+            {% csrf_token %}
+            <div class="text-center">
+                <h3>
+                    <label class="text-primary">Alteração de Cliente - {{ cliente.nome }}</label>
+                </h3>
+            </div>
+            <div class="mb-3">
+                <label for="nome" class="form-label">Nome</label>
+                <input type="text" class="form-control" name="nome" id="nome" value="{{ cliente.nome }}" maxlength="50" required>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">E-mail</label>
+                <input type="email" class="form-control" name="email" value="{{ cliente.email }}" id="email" maxlength="100">
+            </div>
+            <div class="mb-3">
+                <label for="cpf_cnpj" class="form-label">CPF / CNPJ</label>
+                <input type="text" class="form-control" name="cpfcnpj" value="{{ cliente.cpfcnpj }}" id="cpf_cnpj" maxlength="14" required>
+            </div>
+            <div class="mb-3">
+                <label for="tp_pessoa" class="form-label">Tipo de Pessoa</label>
+                <select id="tp_pessoa" class="form-select" name="tp_pessoa">
+                    <option value="0">Selecione</option>
+                    {% for tipo in tipos %}
+                    {% if tipoPessoa == tipo.id %}
+                        <option value="{{ tipo.id }}" selected>{{ tipo.descricao }}</option>
+                        {% else %}
+                        <option value="{{ tipo.id }}">{{ tipo.descricao }}</option>
+                    {% endif %}
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="estado" class="form-label">Estado</label>
+                <select id="estado" class="form-select" name="estado">
+                    <option value="0">Selecione</option>
+                    {% for estado in estados %}
+                        <option value="{{ estado.id }}">{{ estado.nome }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="cidade" class="form-label">Cidade</label>
+                <select id="cidade" class="form-select" name="cidade">
+                    <option value="0">Selecione o Estado</option>
+                    {% for cidade in cidades %}
+                        <option value="{{ cidade.id }}">{{ cidade.nome }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            
+            {% include 'acoes_form_altera.html' %}
+            
+        </form>
+    </div>
 {% endblock %}

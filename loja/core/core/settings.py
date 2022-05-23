@@ -20,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-tx%y(m1u3)ruak%wdi-3w1q%-&@-cu@q275p^tg#wt4%x3+!44'
+SECRET_KEY = 'django-insecure-r@m*bg%#w_th-md&pynsx$2%aj8jxj9#cs97b^9q$nyx@$_slc'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -80,10 +80,10 @@ WSGI_APPLICATION = 'core.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'HOST' : 'localhost',
+        'HOST': 'localhost',
         'NAME' : 'loja',
         'USER' : 'root',
-        'PASSWORD' : '1234',
+        'PASSWORD' : '',
         'PORT' : 3306
     }
 }
@@ -124,7 +124,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
-
 STATICFILES_DIRS = ["static/"]
 
 # Default primary key field type

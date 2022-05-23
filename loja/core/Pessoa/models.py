@@ -1,12 +1,13 @@
 from django.db import models
-from  Local.models import Estado, Cidade
+from Local.models import Estado, Cidade
+
 # Create your models here.
 class TpPessoa(models.Model):
-    descricao = models.CharField(max_length=50, unique=True, blank=False)
+    descricao = models.CharField(max_length=50, blank=False, unique=True)
 
     class Meta:
         db_table = 'TpPessoa'
-    
+
     def __str__(self):
         return self.descricao
 
@@ -14,9 +15,9 @@ class Cliente(models.Model):
     nome = models.CharField(max_length=50, blank=False)
     email = models.EmailField(max_length=100, unique=True)
     cpfcnpj = models.CharField(max_length=14, blank=False, unique=True)
-    tp_pessoa = models.ForeignKey(TpPessoa,on_delete=models.CASCADE)
-    estado = models.ForeignKey(Estado,on_delete=models.CASCADE)
-    cidade = models.ForeignKey(Cidade,on_delete=models.CASCADE)
+    tp_pessoa = models.ForeignKey(TpPessoa, on_delete=models.CASCADE)
+    estado = models.ForeignKey(Estado, on_delete=models.CASCADE)
+    cidade = models.ForeignKey(Cidade, on_delete=models.CASCADE)
 
 
     class Meta:
@@ -31,8 +32,6 @@ class Fornecedor(models.Model):
     email = models.EmailField(max_length=100, blank=False, unique=True)
     cpfcnpj = models.CharField(max_length=14, blank=False, unique=True)
     tp_pessoa = models.ForeignKey(TpPessoa, on_delete=models.CASCADE)
-    estado = models.ForeignKey(Estado,on_delete=models.CASCADE)
-    cidade = models.ForeignKey(Cidade,on_delete=models.CASCADE)
 
     class Meta:
         db_table = 'Fornecedor'

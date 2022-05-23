@@ -1,15 +1,18 @@
 body{
     background-color: #fdfdfd;
+    
 }
-
-.ImagemInicio{
+.imagemInicio{
     margin-left: 20%;
     height: 40%;
-    width: 40%;
     position: relative;
+    width: 40%;
 }
 
 #pesquisa{
+    width: 80%;
+}
 
-    width: 60%;
+#botaoPesquisa{
+    margin-left: 3%;
 }
