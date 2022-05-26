@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
-from ViewsProject.views import efetua_paginacao
 from .forms import FormCategoria, FormItem
 from .models import Categoria, Item
+from ViewsProject.views import efetua_paginacao
 
 # Create your views here.
 def lista_categorias(request):
@@ -11,14 +11,16 @@ def lista_categorias(request):
         categorias = Categoria.objects.filter(nome__icontains=procura)
     else:
         categorias = Categoria.objects.all()
+
     total = categorias.count
 
     dados = { 
         'categorias' : categorias, 
         'total' : total, 
-        'procura': procura,
-        'porPagina':efetua_paginacao(request, categorias)
+        'procura' : procura,
+        'porPagina' : efetua_paginacao(request,categorias)
         }
+
     return render(request,'lista_categorias.html',dados)
 
 def cadastra_categoria(request):
@@ -46,22 +48,26 @@ def exclui_categoria(request, id):
     if request.method == 'POST':
         categoria.delete()
         return redirect(lista_categorias)
-    return render(request,'exclui_categoria.html',{'categoria':categoria})
-#ITENS#
+
+    return render(request,'exclui_categoria.html',{ 'categoria' : categoria })
+
 def lista_itens(request):
     procura = request.GET.get('procura')
+
     if procura:
-        item = Item.objects.filter(nome__icontains=procura)
+        item = Item.objects.filter(descricao__icontains=procura)#|Item.objects.filter(categoria_id__icontains=procura)
     else:
         item = Item.objects.all()
+
     total = item.count
 
     dados = { 
         'item' : item, 
         'total' : total, 
-        'procura': procura,
-        'porPagina': efetua_paginacao(request, item)
+        'procura' : procura,
+        'porPagina' : efetua_paginacao(request,item)
         }
+        
     return render(request,'lista_itens.html',dados)
 
 def cadastra_item(request):
@@ -99,4 +105,5 @@ def exclui_item(request, id):
     if request.method == 'POST':
         item.delete()
         return redirect(lista_itens)
-    return render(request,'exclui_item.html', {'item':item, 'categ':categoria})
+        
+    return render(request,'exclui_item.html', { 'item' : item, 'categ' : categoria })

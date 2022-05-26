@@ -28,8 +28,17 @@
             <input type="text" class="form-control" name="cpfcnpj" id="cpf_cnpj" required maxlength="14" />
         </div>
         <div class="mb-3">
+            <label for="tp_pessoa" class="form-label">Tipo de Pessoa</label>
+            <select id="tp_pessoa" class="form-select" name="tp_pessoa" >
+                <option value="0">Selecione</option>
+                {% for tipo in tipos %}
+                <option value="{{ tipo.id }}">{{ tipo.descricao }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="mb-3">
             <label for="estado" class="form-label">Estado</label>
-            <select id="estado" class="form-select" name="estado" >
+            <select name="estado" id="estado" class="form-select">
                 <option value="0">Selecione o Estado</option>
                 {% for estado in estados %}
                 <option value="{{ estado.id }}">{{ estado.nome }}</option>
@@ -38,19 +47,10 @@
         </div>
         <div class="mb-3">
             <label for="cidade" class="form-label">Cidade</label>
-            <select id="cidade" class="form-select" name="cidade" >
+            <select name="cidade" id="cidade" class="form-select">
                 <option value="0">Selecione a Cidade</option>
                 {% for cidade in cidades %}
                 <option value="{{ cidade.id }}">{{ cidade.nome }}</option>
-                {% endfor %}
-            </select>
-        </div>
-        <div class="mb-3">
-            <label for="tp_pessoa" class="form-label">Tipo de Pessoa</label>
-            <select id="tp_pessoa" class="form-select" name="tp_pessoa" >
-                <option value="0">Selecione o Tipo de Pessoa</option>
-                {% for tipo in tipos %}
-                <option value="{{ tipo.id }}">{{ tipo.descricao }}</option>
                 {% endfor %}
             </select>
         </div>

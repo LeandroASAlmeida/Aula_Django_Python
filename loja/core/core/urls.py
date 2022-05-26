@@ -14,8 +14,9 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from ViewsProject.views import retornaRequest, exibeTabela, Inicio, Contato
+from .views import login
 # Pessoa
 from Pessoa.views import lista_tp_pessoas, lista_fornecedores, lista_clientes, lista_usuarios
 from Pessoa.views import cadastra_cliente, cadastra_fornecedor, cadastra_tp_pessoa, cadastra_usuario
@@ -38,45 +39,38 @@ urlpatterns = [
     path('__tabela',exibeTabela),
     path('inicio',Inicio,name='inicio'),
     path('contato',Contato,name='contato'),
-    
     path('lista-tipos-pessoa',lista_tp_pessoas,name='lista-tipos-pessoa'),
     path('cadastra-tipo-pessoa',cadastra_tp_pessoa, name='cadastra-tipo-pessoa'),
     path('altera-tipo-pessoa/<int:id>',altera_tp_pessoa),
     path('exclui-tipo-pessoa/<int:id>',exclui_tp_pessoa),
-
     path('lista-clientes',lista_clientes, name='lista-clientes'),
     path('cadastra-cliente',cadastra_cliente, name='cadastra-cliente'),
     path('altera-cliente/<int:id>',altera_cliente),
     path('exclui-cliente/<int:id>',exclui_cliente),
-
     path('lista-fornecedores',lista_fornecedores, name='lista-fornecedores'),
     path('cadastra-fornecedor',cadastra_fornecedor, name='cadastra-fornecedor'),
     path('altera-fornecedor/<int:id>',altera_fornecedor),
     path('exclui-fornecedor/<int:id>',exclui_fornecedor),
-
     path('lista-usuarios',lista_usuarios, name='lista-usuarios'),
     path('cadastra-usuario',cadastra_usuario, name='cadastra-usuario'),
     path('altera-usuario/<int:id>',altera_usuario),
     path('exclui-usuario/<int:id>',exclui_usuario),
-
     path('lista-categorias',lista_categorias, name='lista-categorias'),
     path('cadastra-categoria',cadastra_categoria, name='cadastra-categoria'),
     path('altera-categoria/<int:id>',altera_categoria),
     path('exclui-categoria/<int:id>',exclui_categoria),
-
     path('lista-itens',lista_itens, name='lista-itens'),
     path('cadastra-item',cadastra_item, name='cadastra-item'),
     path('altera-item/<int:id>',altera_item),
     path('exclui-item/<int:id>',exclui_item),
-
     path('lista-estados',lista_estados, name='lista-estados'),
     path('cadastra-estado',cadastra_estado, name='cadastra-estado'),
     path('altera-estado/<int:id>',altera_estado),
     path('exclui-estado/<int:id>',exclui_estado),
-
     path('lista-cidades',lista_cidades, name='lista-cidades'),
     path('cadastra-cidade',cadastra_cidade, name='cadastra-cidade'),
     path('altera-cidade/<int:id>',altera_cidade),
-    path('exclui-cidade',exclui_cidade),
+    path('exclui-cidade/<int:id>',exclui_cidade),
+    path('login',include('django.contrib.auth.urls')),
     path('',Inicio, name='inicio'),
 ]

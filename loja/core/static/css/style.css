@@ -9,7 +9,10 @@ body{
     position: relative;
 }
 
-#formPesquisa{
+#pesquisa{
     width: 80%;
-    
+}
+
+#botaoPesquisa{
+    margin-left: 3%;
 }

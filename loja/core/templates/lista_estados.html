@@ -23,13 +23,13 @@
             </tr>
         </thead>
         <tbody>
-            {% for estado in estado %}
+            {% for estado in porPagina %}
             <tr>
                 <td>{{ estado.sigla }}</td>
                 <td>{{ estado.nome }}</td>
                 <td class="text-center">
                     <button class="btn btn-warning" onclick="location.href='altera-estado/{{ estado.id }}'">ALTERAR</button>
-                    <button class="btn btn-danger" onclick="location.href='exclui-estado/{{estado.id}}'" >EXCLUIR</button>
+                    <button class="btn btn-danger" onclick="location.href='exclui-estado/{{ estado.id }}'" >EXCLUIR</button>
                 </td>                
             </tr>
             {% endfor %}
@@ -42,6 +42,7 @@
             </tr>
         </tfoot>
     </table>
+    {% include 'paginacao.html' %}
     {% elif procura %}
     {% include 'sem_registro_encontrado.html' %}
     {% else %}

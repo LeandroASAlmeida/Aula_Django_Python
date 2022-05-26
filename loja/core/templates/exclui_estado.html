@@ -8,16 +8,16 @@
         {% csrf_token %}
         <div class="text-center">
             <h3>
-                <label class="text-primary">Exclusão de Estado - {{estado.nome}}</label>
+                <label class="text-primary">Exclusão de Estado - {{ estado.nome }}</label>
             </h3>
         </div>
         <div class="mb-3">
             <label for="sigla" class="form-label">Sigla</label>
-            <input type="text" class="form-control" id="sigla" maxlength="2" value="{{estado.sigla}}" minlength="2" disabled />
+            <input type="text" class="form-control" id="sigla" value="{{ estado.sigla }}" maxlength="2" minlength="2" disabled />
         </div>
         <div class="mb-3">
             <label for="nome" class="form-label">Nome</label>
-            <input type="text" class="form-control" id="nome" maxlength="50" value="{{estado.nome}}" disabled />
+            <input type="text" class="form-control" id="nome" value="{{ estado.nome }}" maxlength="50" disabled />
         </div>
         {% include 'acoes_form_exclui.html' %}
     </form>

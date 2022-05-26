@@ -19,7 +19,6 @@ class Cliente(models.Model):
     estado = models.ForeignKey(Estado,on_delete=models.CASCADE)
     cidade = models.ForeignKey(Cidade,on_delete=models.CASCADE)
 
-
     class Meta:
         db_table = 'Cliente'
     

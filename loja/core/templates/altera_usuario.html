@@ -24,18 +24,18 @@
             <input type="text" class="form-control" id="login" name="login" value="{{ usuario.login }}" maxlength="50" required />
         </div>
         <div class="mb-3">
-            <label for="senha" class="form-label">Senha Atual</label>
-            <input type="password" class="form-control" id="senha" name="senha" required maxlength="50" />
-        </div>   
+            <label for="senhaAtual" class="form-label">Senha Atual</label>
+            <input type="password" class="form-control" id="senhaAtual" required maxlength="50" />
+        </div>
         <div class="mb-3">
-            <label for="novasenha">Nova Senha</label>
-            <input type="password" class="form-control" id="novasenha" required maxlength="50"/>
+            <label for="novasenha" class="form-label">Nova Senha</label>
+            <input type="password" class="form-control" id="novasenha" required maxlength="50" />
         </div>
         <div class="mb-3">
             <label for="confirma" class="form-label">Confirmar a Nova Senha</label>
-            <input type="password" name="senha" id="confirma" class="form-control" required maxlength="50"/>
-        </div>     
+            <input type="password" name="senha" id="confirma" class="form-control" required maxlength="50" />
+        </div>
         {% include 'acoes_form_altera.html' %}
     </form>
 </div>
-{% endblock %} 
+{% endblock %}

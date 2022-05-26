@@ -24,30 +24,6 @@
             <input type="text" class="form-control" name="cpfcnpj" id="cpf_cnpj" value="{{ cliente.cpfcnpj }}" required maxlength="14" />
         </div>
         <div class="mb-3">
-            <label for="estado" class="form-label">Estado</label>
-            <select id="estado" class="form-select" name="estado">
-                {% for estado in estados %}
-                {% if estadoCliente == estado.id %}
-                <option value="{{ estado.id }}" selected>{{ estado.nome }}</option>
-                {% else %}
-                <option value="{{ estado.id }}">{{ estado.nome }}</option>
-                {% endif %}
-                {% endfor %}
-            </select>
-        </div>
-        <div class="mb-3">
-            <label for="cidade" class="form-label">Cidade</label>
-            <select id="cidade" class="form-select" name="cidade">
-                {% for cidade in cidades %}
-                {% if cidadeCliente == cidade.id %}
-                <option value="{{ cidade.id }}" selected>{{ cidade.nome }}</option>
-                {% else %}
-                <option value="{{ cidade.id }}">{{ cidade.nome }}</option>
-                {% endif %}
-                {% endfor %}
-            </select>
-        </div>
-        <div class="mb-3">
             <label for="tp_pessoa" class="form-label">Tipo de Pessoa</label>
             <select id="tp_pessoa" class="form-select" name="tp_pessoa">
                 <option value="0">Selecione</option>
@@ -56,6 +32,32 @@
                 <option value="{{ tipo.id }}" selected>{{ tipo.descricao }}</option>
                 {% else %}
                 <option value="{{ tipo.id }}">{{ tipo.descricao }}</option>
+                {% endif %}
+                {% endfor %}
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="estado" class="form-label">Estado</label>
+            <select name="estado" id="estado" class="form-select">
+                <option value="0">Selecione o Estado</option>
+                {% for estado in estados %}
+                {% if estadoCliente == estado.id %}
+                <option value="{{ estado.id }}" selected >{{ estado.nome }}</option>
+                {% else %}
+                <option value="{{ estado.id }}">{{ estado.nome }}</option>
+                {% endif %}
+                {% endfor %}
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="cidade" class="form-label">Cidade</label>
+            <select name="cidade" id="cidade" class="form-select">
+                <option value="0">Selecione o Estado</option>
+                {% for cidade in cidades %}
+                {% if cidadeCliente == cidade.id %}
+                <option value="{{ cidade.id }}" selected >{{ cidade.nome }}</option>
+                {% else %}
+                <option value="{{ cidade.id }}">{{ cidade.nome }}</option>
                 {% endif %}
                 {% endfor %}
             </select>

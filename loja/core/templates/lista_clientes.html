@@ -20,8 +20,6 @@
                 <th>Nome</th>
                 <th>E-mail</th>
                 <th>Tipo Pessoa</th>
-                <th>Estado</th>
-                <th>Cidade</th>
                 <th class="text-center">Ações</th>
             </tr>
         </thead>
@@ -31,8 +29,6 @@
                 <td>{{ cliente.nome }}</td>
                 <td>{{ cliente.email }}</td>
                 <td>{{ cliente.tp_pessoa }}</td>
-                <td>{{ cliente.estado }}</td>
-                <td>{{ cliente.cidade }}</td>
                 <td class="text-center">
                     <button class="btn btn-warning" onclick="location.href='altera-cliente/{{ cliente.id }}'">ALTERAR</button>
                     <button class="btn btn-danger" onclick="location.href='exclui-cliente/{{ cliente.id }}'">EXCLUIR</button>
