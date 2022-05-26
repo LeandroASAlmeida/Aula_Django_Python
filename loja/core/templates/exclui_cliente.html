@@ -32,13 +32,13 @@
             <div class="mb-3">
                 <label for="estado" class="form-label">Estado</label>
                 <select id="estado" class="form-select" name="estado" disabled>
-                    <option value="0">Selecione</option>
+                    <option value="{{ estado.id }}">{{ estado.nome }}</option>
                 </select>
             </div>
             <div class="mb-3">
                 <label for="cidade" class="form-label">Cidade</label>
                 <select id="cidade" class="form-select" name="cidade" disabled>
-                    <option value="0">Selecione o Estado</option>
+                    <option value="{{ cidade.id  }}">{{ cidade.nome }}</option>
                 </select>
             </div>
             

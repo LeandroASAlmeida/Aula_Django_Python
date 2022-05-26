@@ -50,7 +50,11 @@
                 <select id="cidade" class="form-select" name="cidade">
                     <option value="0">Selecione o Estado</option>
                     {% for cidade in cidades %}
-                        <option value="{{ cidade.id }}">{{ cidade.nome }}</option>
+                    {% if cidadeCliente == cidade.id %}
+                    <option value="{{ cidade.id }}" selected>{{ cidade.nome }}</option>
+                    {% else %}
+                    <option value="{{ cidade.id }}">{{ cidade.nome }}</option>
+                    {% endif %}
                     {% endfor %}
                 </select>
             </div>

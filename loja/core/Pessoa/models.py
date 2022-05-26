@@ -32,6 +32,8 @@ class Fornecedor(models.Model):
     email = models.EmailField(max_length=100, blank=False, unique=True)
     cpfcnpj = models.CharField(max_length=14, blank=False, unique=True)
     tp_pessoa = models.ForeignKey(TpPessoa, on_delete=models.CASCADE)
+    estado = models.ForeignKey(Estado, on_delete=models.CASCADE)
+    cidade = models.ForeignKey(Cidade, on_delete=models.CASCADE)
 
     class Meta:
         db_table = 'Fornecedor'
