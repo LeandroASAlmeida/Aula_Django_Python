@@ -1,6 +1,6 @@
-from django.shortcuts import render, redirect
-from .forms import FormCidade, FormEstado
-from. models import Estado, Cidade
+from django.shortcuts import redirect, render
+from .forms import FormEstado, FormCidade
+from .models import Estado, Cidade
 from ViewsProject.views import efetua_paginacao
 
 # Create your views here.
@@ -15,13 +15,13 @@ def lista_estados(request):
     total = estado.count
 
     dados = {
-        'estado' : estado, 
-        'total' : total, 
-        'procura' : procura,
-        'porPagina' : efetua_paginacao(request,estado)
-        }
+                'estado' : estado, 
+                'total' : total, 
+                'procura' : procura,
+                'porPagina' : efetua_paginacao(request, estado)
+            }
 
-    return render(request,'lista_estados.html',dados)
+    return render(request, 'lista_estados.html', dados)
 
 def cadastra_estado(request):
     if request.method == 'POST':
@@ -29,27 +29,22 @@ def cadastra_estado(request):
         if form.is_valid():
             form.save()
             return redirect(lista_estados)
-    return render(request,'cadastra_estado.html')
+    return render(request, 'cadastra_estado.html')
 
 def altera_estado(request,id):
     estado = Estado.objects.get(id=id)
     form = FormEstado(request.POST, instance=estado)
-
-    if request.method == 'POST':
-        if form.is_valid():
-            form.save()
-            return redirect(lista_estados)
-
-    return render(request,'altera_estado.html',{ 'estado' : estado })
+    if form.is_valid():
+        form.save()
+        return redirect(lista_estados)
+    return render(request, 'altera_estado.html', {'estado' : estado})
 
 def exclui_estado(request, id):
     estado = Estado.objects.get(id=id)
-
     if request.method == 'POST':
         estado.delete()
         return redirect(lista_estados)
-        
-    return render(request,'exclui_estado.html', { 'estado' : estado })
+    return render(request, 'exclui_estado.html', {'estado' : estado})
 
 def lista_cidades(request):
     procura = request.GET.get('procura')
@@ -61,14 +56,14 @@ def lista_cidades(request):
 
     total = cidades.count
 
-    dados = { 
-        'cidades' : cidades, 
-        'total' : total, 
-        'procura' : procura,
-        'porPagina' : efetua_paginacao(request,cidades)
-        }
-        
-    return render(request,'lista_cidades.html', dados)
+    dados = {
+                'cidades' : cidades, 
+                'total': total, 
+                'procura' : procura,
+                'porPagina' : efetua_paginacao(request, cidades)
+            }
+
+    return render(request, 'lista_cidades.html', dados)
 
 def cadastra_cidade(request):
     estado = Estado.objects.all()
@@ -77,29 +72,29 @@ def cadastra_cidade(request):
         if form.is_valid():
             form.save()
             return redirect(lista_cidades)
-    return render(request,'cadastra_cidade.html', { 'estados' : estado })
+    return render(request, 'cadastra_cidade.html', {'estados' : estado})
 
 def altera_cidade(request,id):
-    cidade = Cidade.objects.get(id=id) # SELECT * FROM cidades WHERE id = id
-    estados = Estado.objects.all() # SELECT * FROM estados
-    estadoId = Estado.objects.get(id=cidade.estado_id) # Já sei qual é o Estado da cidade selecionada
-    form = FormCidade(request.POST, instance=cidade)
+    cidade = Cidade.objects.get(id=id)
+    estados = Estado.objects.all()
+    estadoId = Estado.objects.get(id=cidade.estado_id)
+
     dados = {
-        'cidade' : cidade,
-        'estados' : estados,
-        'estadoId' : estadoId.id
-    }
+                'cidade' : cidade,
+                'estados' : estados,
+                'estadoId' : estadoId
+            }
+    form = FormCidade(request.POST, instance=cidade)
     if request.method == 'POST':
         if form.is_valid():
             form.save()
             return redirect(lista_cidades)
-    return render(request,'altera_cidade.html',dados)
+    return render(request, 'altera_cidade.html', dados)
 
 def exclui_cidade(request, id):
     cidade = Cidade.objects.get(id=id)
     estado = Estado.objects.get(id=cidade.estado_id)
-
     if request.method == 'POST':
         cidade.delete()
         return redirect(lista_cidades)
-    return render(request,'exclui_cidade.html',{ 'cidade' : cidade, 'estado' : estado })
+    return render(request, 'exclui_cidade.html', {'cidade' : cidade, 'estado' : estado})
