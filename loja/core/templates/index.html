@@ -4,20 +4,41 @@
 
 {% block corpo %}
 <div class="container">
-    <div class="row justify-content-md-center">
+    <div class="d-flex justify-content-center">
         <h1>
             <label class="text-dark">
                 Projeto exemplo desenvolvido em Python - Proway
             </label>
         </h1>
     </div>
-    <div class="row justify-content-md-center">
+    <div class="d-flex justify-content-center">
         <h2>
             <label class="text-secondary">
                 Projeto para loja de informática
             </label>
         </h2>
     </div>
+    <IMG class="logopy" src="https://debugpointer.com/static/images/thumbnails/django.png" width="200">
 </div>
+
+<style>
+    IMG.logopy {
+        display: block;
+        margin-left: auto;
+        margin-right: auto
+    }
+
+    .container {
+        height: 10em;
+        position: relative;
+        margin: 0;
+        background: rgb(180, 180, 180);
+        position: absolute;
+        top: 35%;
+        left: 50%;
+        margin-right: -50%;
+        transform: translate(-50%, -50%)
+    }
+</style>
 
 {% endblock %}

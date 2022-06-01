@@ -29,10 +29,11 @@ from Item.views import cadastra_categoria, cadastra_item
 from Item.views import altera_categoria, altera_item
 from Item.views import exclui_categoria, exclui_item
 
-from Local.views import lista_cidades, lista_estados, busca_cidades
+from Local.views import lista_cidades, lista_estados
 from Local.views import cadastra_cidade, cadastra_estado
 from Local.views import altera_cidade, altera_estado
 from Local.views import exclui_cidade, exclui_estado
+from Local.views import  busca_cidades
 
 urlpatterns = [
     path('admin/', admin.site.urls),

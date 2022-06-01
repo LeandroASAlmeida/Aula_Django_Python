@@ -109,7 +109,6 @@ def exclui_cidade(request, id):
         return redirect(lista_cidades)
     return render(request, 'exclui_cidade.html', {'cidade': cidade, 'estado': estado})
 
-
 def busca_cidades(request, id):
     estado = Estado.objects.get(id=id)
     cidades = [cidades for cidades in Cidade.objects.filter(

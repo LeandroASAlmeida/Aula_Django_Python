@@ -50,14 +50,19 @@
         </div>
         {% include 'acoes_form.html' %}
     </form>
-    <script type="text/javascript">
+    <script type="text/javascript">//jquery
         $(document).ready(function () {
             $('#estado').on('change', function () {
-                $('#cidade').append('<option value="1">Blumenau</option><option value="2">Joinville</option><option value="3">Timbó</option>');
-
+                $('#cidade').empty();
+                $('#cidade').append('<option value=0 selected>Selecione o Estado</option>');
+                $.get('/busca_cidades/' + $(this).val(), function (retorno) {
+                    retorno = retorno.replace('[', '').replace('[', '').split(',');
+                    for (i = 0; i < retorno.length; i++) {
+                        $('#cidade').append('<option value="">' + retorno[i].replace('cidade:', '') + '</option>')
+                    }
+                })
             })
-        }) //jquery
-
+        }) 
     </script>
 </div>
 {% endblock %}
