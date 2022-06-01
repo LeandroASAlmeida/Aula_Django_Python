@@ -23,9 +23,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-r@m*bg%#w_th-md&pynsx$2%aj8jxj9#cs97b^9q$nyx@$_slc'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# ele precisa receber de algum servidor para nao dar erro na tela para o usuario.
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1']  # nome do IP que esta colocado nossa aplicacao
 
 
 # Application definition
@@ -81,10 +82,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'HOST': 'localhost',
-        'NAME' : 'loja',
-        'USER' : 'root',
-        'PASSWORD' : '',
-        'PORT' : 3306
+        'NAME': 'loja',
+        'USER': 'root',
+        'PASSWORD': '',
+        'PORT': 3306
     }
 }
 

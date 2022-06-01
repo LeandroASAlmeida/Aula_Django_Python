@@ -3,20 +3,42 @@
 {% block titulo %}Exclusão de Categoria{% endblock %}
 
 {% block corpo %}
-    <div class="form-control">
-        <form method="post">
-            {% csrf_token %}
-            <div class="text-center">
-                <h3>
-                    <label class="text-primary">Exclusão de Categoria - {{ categoria.nome }}</label>
-                </h3>
+<div class="form-control">
+    <form method="post">
+        {% csrf_token %}
+        <div class="text-center">
+            <h3>
+                <label class="text-primary">Exclusão de Categoria - {{ categoria.nome }}</label>
+            </h3>
+        </div>
+        <div class="mb-3">
+            <label for="nome" class="form-label">Categoria</label>
+            <input type="text" class="form-control" name="nome" value="{{ categoria.nome }}" id="nome" maxlength="50"
+                disabled />
+        </div>
+
+        {% include 'acoes_form_exclui.html' %}
+    </form>
+    <div class="modal fade" id="modal_delete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-danger">
+                    <h5 class="modal-title text-light" id="exampleModalLabel">Excluir Registro</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Deseja Realmente excluir a Categoria <label class="text-danger">{{ categoria.nome }}</label>
+                </div>
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-danger" data-bs-dismiss="modal">Sim</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Não</button>
+                    </div>
+                </form>
             </div>
-            <div class="mb-3">
-                <label for="nome" class="form-label">Categoria</label>
-                <input type="text" class="form-control" name="nome" value="{{ categoria.nome }}" id="nome" maxlength="50" disabled /> 
-            </div>
-            
-            {% include 'acoes_form_exclui.html' %}
-        </form>
+        </div>
     </div>
+</div>
 {% endblock %}

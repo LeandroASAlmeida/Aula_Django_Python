@@ -5,12 +5,12 @@
 {% block corpo %}
     <div class="text-center">
         <h3>
-            <label class="text-primary">Lista de Clientes</label>
+            <label class="text-dark">Lista de Clientes</label>
         </h3>
     </div>
     {% if user.is_authenticated %}
     <div class="container mt-4">
-        <button class="btn btn-primary" onclick="location.href='cadastra-cliente'">Novo</button>
+        <button class="text-white bg-dark" onclick="location.href='cadastra-cliente'">Novo</button>
     </div>
     {% include 'form_pesquisa.html' %}
     {% endif %}

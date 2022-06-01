@@ -29,7 +29,7 @@ from Item.views import cadastra_categoria, cadastra_item
 from Item.views import altera_categoria, altera_item
 from Item.views import exclui_categoria, exclui_item
 
-from Local.views import lista_cidades, lista_estados
+from Local.views import lista_cidades, lista_estados, busca_cidades
 from Local.views import cadastra_cidade, cadastra_estado
 from Local.views import altera_cidade, altera_estado
 from Local.views import exclui_cidade, exclui_estado
@@ -73,5 +73,8 @@ urlpatterns = [
     path('altera-cidade/<int:id>', altera_cidade),
     path('exclui-cidade/<int:id>', exclui_cidade),
     path('accounts/', include('django.contrib.auth.urls')),
+    path('busca_cidades/<int:id>', busca_cidades),
     path('', Inicio, name='inicio'),
 ]
+
+handler404 = 'core.views.pagina_inexistente'

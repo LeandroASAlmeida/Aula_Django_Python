@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Pagina Inesxistente{% endblock %}
+
+{% block corpo %}
+<div id='oopss'>
+    <div id='error-text'>
+        <img src="https://cdn.rawgit.com/ahmedhosna95/upload/1731955f/sad404.svg" alt="404">
+        <span>404 ERROR PAGE</span>
+        <p class="p-a">Esta página da Web não está disponível</p>
+        <p class="p-a">Caso não consiga acessar a página da Web em nenhum computador, verifique se você está conectado à
+            Internet. Se estiver, a página da Web pode estar fora do ar.</p>
+        <p class="p-b">Confira o endereço da Web (URL) na barra de endereço para certificar-se de que esteja acessando a
+            página da Web correta.
+        <p>
+            <a href="{% url 'inicio' %}" class="back">Volte para o Inicio, clicando aqui.</a>
+    </div>
+</div>
+{% endblock %}
