@@ -36,7 +36,7 @@
         <div class="mb-3">
             <label for="estado" class="form-label">Estado</label>
             <select id="estado" class="form-select" name="estado">
-                <option value="0">Selecione</option>
+                <option value="0">Selecione o Estado</option>
                 {% for estado in estados %}
                 <option value="{{ estado.id }}">{{ estado.nome }}</option>
                 {% endfor %}
@@ -48,21 +48,23 @@
                 <option value="0">Selecione o Estado</option>
             </select>
         </div>
+
         {% include 'acoes_form.html' %}
+
     </form>
-    <script type="text/javascript">//jquery
+    <script type="text/javascript">
         $(document).ready(function () {
             $('#estado').on('change', function () {
                 $('#cidade').empty();
-                $('#cidade').append('<option value=0 selected>Selecione o Estado</option>');
-                $.get('/busca_cidades/' + $(this).val(), function (retorno) {
-                    retorno = retorno.replace('[', '').replace('[', '').split(',');
+                $('#cidade').append('<option value="0">Selecione o Estado</option>');
+                $.get('/busca-cidades/' + $(this).val(), function (retorno) {
+                    retorno = retorno.replace('[', '').replace(']', '').split(',');
                     for (i = 0; i < retorno.length; i++) {
-                        $('#cidade').append('<option value="">' + retorno[i].replace('cidade:', '') + '</option>')
+                        $('#cidade').append('<option value="">' + retorno[i] + '</option>');
                     }
                 })
             })
-        }) 
+        })
     </script>
 </div>
 {% endblock %}
