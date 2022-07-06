@@ -14,7 +14,7 @@ class Estado(models.Model):
 
 class Cidade(models.Model):
     nome = models.CharField(max_length=50, blank=False, unique=True)
-    estado = models.ForeignKey(Estado, on_delete=models.CASCADE)
+    estado = models.ForeignKey(Estado, on_delete=models.PROTECT)
 
     class Meta:
         db_table = 'Cidade'

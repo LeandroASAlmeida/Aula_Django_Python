@@ -75,8 +75,8 @@ def lista_clientes(request):
 
 def cadastra_cliente(request):
     tp_pessoa = TpPessoa.objects.all()
-    estados = Estado.objects.all()
-    cidades = Cidade.objects.all()
+    estados = Estado.objects.all().order_by('nome')
+    cidades = Cidade.objects.all().order_by('nome')
     if request.method == 'POST':
         form = FormCliente(request.POST or None)
         if form.is_valid():

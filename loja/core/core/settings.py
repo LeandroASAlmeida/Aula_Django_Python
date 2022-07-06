@@ -24,9 +24,9 @@ SECRET_KEY = 'django-insecure-r@m*bg%#w_th-md&pynsx$2%aj8jxj9#cs97b^9q$nyx@$_slc
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # ele precisa receber de algum servidor para nao dar erro na tela para o usuario.
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1']  # nome do IP que esta colocado nossa aplicacao
+ALLOWED_HOSTS = ['127.0.0.1','localhost']  # nome do IP que esta colocado nossa aplicacao
 
 
 # Application definition
@@ -84,8 +84,8 @@ DATABASES = {
         'HOST': 'localhost',
         'NAME': 'loja',
         'USER': 'root',
-        'PASSWORD': '1234',
-        'PORT': 3306
+        'PASSWORD': '',
+        'PORT': 3307
     }
 }
 

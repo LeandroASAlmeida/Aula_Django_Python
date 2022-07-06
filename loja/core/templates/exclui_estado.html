@@ -23,7 +23,13 @@
         </div>
 
         {% include 'acoes_form_exclui.html' %}
-
+        {% if mensagem %}
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong>Atenção!</strong>{{ mensagem }}
+            <button type ="button" class="btn-close" data-bs-dismiss="alert" aria-alert="Close"></button>
+            </div>
+        {% endif %}
+        </div>
     </form>
     <div class="modal fade" id="modal_delete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">

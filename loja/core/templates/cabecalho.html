@@ -42,7 +42,7 @@
       {% if user.is_authenticated %}
       <div class="btn-group dropstart">
         <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-          Bem Vindo
+          {{ user.first_name }}
         </button>
         <ul class="dropdown-menu">
           <li><a class="dropdown-item" href="#">Alterar Senha</a></li>
