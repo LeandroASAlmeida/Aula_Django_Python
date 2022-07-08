@@ -16,43 +16,46 @@
         <li class="nav-item">
           <a class="nav-link" href="{% url 'contato' %}">Contato</a>
         </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button"
-            data-bs-toggle="dropdown" aria-expanded="false">
-            Cadastros
-          </a>
-          <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-            <li><a class="dropdown-item" href="{% url 'lista-tipos-pessoa' %}">Tipo de Pessoa</a></li>
-            <li><a class="dropdown-item" href="{% url 'lista-clientes' %}">Clientes</a></li>
-            <li><a class="dropdown-item" href="{% url 'lista-fornecedores' %}">Fornecedores</a></li>
-            <li><a class="dropdown-item" href="{% url 'lista-usuarios' %}">Usuários</a></li>
-            <li>
-              <hr class="dropdown-divider">
+        {% if user.is_authenticated %}
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Cadastros
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdown" id="itensMenu">
+              <script>
+                $('#navbarDropdown').click(function () {
+                  $('#itensMenu').empty();
+                  $.get('/getMenu/', function (retorno) {
+                    retorno = retorno.replace('{', '').replace('}', '').split(',');
+                    for (i = 0; i < retorno.length; i++) {
+                      $('#itensMenu').append('<li><a class="dropdown-item" href="' +
+                        retorno[i].substring(retorno[i].indexOf(':') + 1).replace(/'/g, '').trim() + '">' +
+                        retorno[i].trim().substring(0, retorno[i].indexOf(':')).replace(':', '').replace(/'/g, '').trim()+'</a></li>');
+                    }
+                  })
+                })
+              </script>
+          {% else %}
+            <li class="nav-item">
+              <a class="nav-link disabled">Cadastros</a>
             </li>
-            <li><a class="dropdown-item" href="{% url 'lista-categorias' %}">Categorias</a></li>
-            <li><a class="dropdown-item" href="{% url 'lista-itens' %}">Itens</a></li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-            <li><a class="dropdown-item" href="{% url 'lista-estados' %}">Estados</a></li>
-            <li><a class="dropdown-item" href="{% url 'lista-cidades' %}">Cidades</a></li>
+            {% endif %}
           </ul>
-        </li>
-      </ul>
+          </ul>
       {% if user.is_authenticated %}
-      <div class="btn-group dropstart">
-        <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-          {{ user.first_name }}
-        </button>
-        <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="#">Alterar Senha</a></li>
-          <li><a class="dropdown-item" href="{% url 'logout' %}">Sair</a></li>
-        </ul>
-      </div>
+          <div class="btn-group" role="group">
+            <button id="btnGroupDrop1" type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+              {{ user.first_name }}
+            </button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Alterar Senha</a></li>
+              <li><a class="dropdown-item" href="{% url 'logout' %}">Sair</a></li>
+            </ul>
+          </div>
       {% else %}
-      <form class="d-flex" action="{% url 'login' %}">
-        <button class="btn btn-warning" type="submit">Acessar</button>
-      </form>
+          <form class="d-flex" action="{% url 'login' %}">
+            <button class="btn btn-warning" type="submit">Acessar</button>
+          </form>
       {% endif %}
     </div>
   </div>
