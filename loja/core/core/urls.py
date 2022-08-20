@@ -14,10 +14,10 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 
+from cgitb import handler
 from django.contrib import admin
 from django.urls import path, include
 from ViewsProject.views import retornaRequest, exibeTabela, Inicio, Contato
-from Aplicacao.views import getMenu
 from .views import login
 
 from Pessoa.views import lista_tp_pessoa, lista_fornecedores, lista_clientes, lista_usuarios
@@ -34,9 +34,7 @@ from Local.views import lista_cidades, lista_estados
 from Local.views import cadastra_cidade, cadastra_estado
 from Local.views import altera_cidade, altera_estado
 from Local.views import exclui_cidade, exclui_estado
-from Local.views import  busca_cidades
-
-
+from Local.views import busca_cidades
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -77,9 +75,8 @@ urlpatterns = [
     path('altera-cidade/<int:id>', altera_cidade),
     path('exclui-cidade/<int:id>', exclui_cidade),
     path('accounts/', include('django.contrib.auth.urls')),
-    path('busca_cidades/<int:id>', busca_cidades),
+    path('busca-cidades/<int:id>', busca_cidades),
     path('', Inicio, name='inicio'),
-    path('getMenu/',getMenu),
 ]
 
 handler404 = 'core.views.pagina_inexistente'

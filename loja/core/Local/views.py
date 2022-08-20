@@ -43,13 +43,9 @@ def altera_estado(request,id):
 def exclui_estado(request, id):
     estado = Estado.objects.get(id=id)
     if request.method == 'POST':
-        try:
-            estado.delete()
-            return redirect(lista_estados)
-        except:
-            msg = 'Não foi possivel o registro porque há cidades vinculadas á ' + estado.nome + '!'
-            return render(request, 'exclui_estado.html', {'estado' : estado,'mensagem': msg })
-    return render(request,'exclui_estado.html',{'estado': estado})
+        estado.delete()
+        return redirect(lista_estados)
+    return render(request, 'exclui_estado.html', {'estado' : estado})
 
 def lista_cidades(request):
     procura = request.GET.get('procura')
@@ -57,7 +53,7 @@ def lista_cidades(request):
     if procura:
         cidades = Cidade.objects.filter(nome__icontains=procura)
     else:
-        cidades = Cidade.objects.all().order_by('nome')
+        cidades = Cidade.objects.all()
 
     total = cidades.count
 

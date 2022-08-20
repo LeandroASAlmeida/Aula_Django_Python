@@ -1,5 +1,7 @@
 from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
+from django.views.decorators.http import require_POST
 
 from .forms import FormTpPessoa, FormCliente, FormFornecedor, FormUsuario
 from .models import TpPessoa, Cliente, Fornecedor, Usuario
@@ -75,8 +77,8 @@ def lista_clientes(request):
 
 def cadastra_cliente(request):
     tp_pessoa = TpPessoa.objects.all()
-    estados = Estado.objects.all().order_by('nome')
-    cidades = Cidade.objects.all().order_by('nome')
+    estados = Estado.objects.all()
+    cidades = Cidade.objects.all()
     if request.method == 'POST':
         form = FormCliente(request.POST or None)
         if form.is_valid():
@@ -201,12 +203,14 @@ def exclui_fornecedor(request,id):
     return render(request, 'exclui_fornecedor.html', dados)
 
 def lista_usuarios(request):
+
+
     procura= request.GET.get('procura')
 
     if procura:
-        usuario = Usuario.objects.filter(nome__icontains=procura)
+        usuario = User.objects.filter(nome__icontains=procura)
     else:
-        usuario = Usuario.objects.all()
+        usuario = User.objects.all()
 
     total = usuario.count
 
@@ -221,19 +225,29 @@ def lista_usuarios(request):
 
 def cadastra_usuario(request):
     if request.method == 'POST':
-        form = FormUsuario(request.POST or None)
-        if form.is_valid():
-            form.save()
+        try:
+            validaUsuario = User.objects.get(username=request.POST['login'])
+
+            if validaUsuario:
+                return render(request,'cadastra_usuario.html', {'msg' : 'Usuário existente!'})
+        except User.DoesNotExist:
+            primeiroNome = request.POST['nome']
+            segundoNome = request.POST['sobrenome']
+            login = request.POST['login']
+            senha = request.POST['senha']
+        
+            novoUsuario = User.objects.create_user(first_name=primeiroNome, last_name=segundoNome,username=login,password=senha)
+            novoUsuario.save()
             return redirect(lista_usuarios)
     return render(request, 'cadastra_usuario.html')
 
 def altera_usuario(request,id):
-    usuario = Usuario.objects.get(id=id)
-    form = FormUsuario(request.POST, instance=usuario)
-    if request.method == 'POST':
-        if form.is_valid():
-            form.save()
-            return redirect(lista_usuarios)
+    usuario = User.objects.get(id=id)
+    # form = FormUsuario(request.POST, instance=usuario)
+    # if request.method == 'POST':
+    #     if form.is_valid():
+    #         form.save()
+    #         return redirect(lista_usuarios)
     return render(request, 'altera_usuario.html',{'usuario' : usuario})
 
 def exclui_usuario(request,id):
